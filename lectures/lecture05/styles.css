@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: yellow;
+    padding: 40px;
+}
+
+main {
+    padding: 20px;
+    background-color: rgb(225, 228, 228);
+}
+section {
+border: 1px;
+border-color: lightgray;
+border-style: solid;
+display: inline-block;
+margin: 20px;
+background-color: white;
+}
+p
