@@ -1,0 +1,74 @@
+body * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #F4F4F4;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Begin Debugging Code */
+header,
+main,
+section,
+article,
+nav,
+.logo {
+    border: solid 2px #CCC;
+    padding: 10px;
+    margin: 10px;
+}
+
+.logo {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+aside,
+body>header,
+main,
+.news-feed {
+    border: solid 4px #000;
+    padding: 10px;
+    margin: 10px;
+}
+
+/* End Debugging Code */
+
+article {
+    min-height: 300px;
+}
+
+#top-header {
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+aside {
+    background-color: white;
+    position: fixed;
+    right: 5vw;
+    top: 85px;
+    width: 25vw;
+
+}
+
+main {
+    margin-top: 100px;
+    width: 60vw;
+    left-margin: 10vw;
+}
+
+@media (max-width: 800px) {
+    aside {display: none;}
+    main {
+        width: 95%
+    }
+}
