@@ -2,10 +2,38 @@
 
 body {
     background-color: rgb(167, 210, 244);
+
+}
+
+section {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 h1, h2 {
     font-family: "Shadows Into Light", cursive;
     font-weight: 400;
     font-style: normal;
+}
+
+h1 {
+    font-size: xxx-large;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    margin-top: 30px;
+}
+
+h2 {
+    font-size: xx-large;
+}
+
+p, ul a {
+    font-size: larger;
+    line-height: 1.4;
+}
+
+ol a {
+    font-size:medium;
+    line-height: 1.5;
 }
