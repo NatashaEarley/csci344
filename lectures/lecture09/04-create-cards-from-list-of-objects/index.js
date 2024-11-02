@@ -12,8 +12,8 @@ for(const person of people) {
     console.log(person);
     const snippet = `
                 <div class="card">
-                <img src="http://knight.gamebanana.com/img/ico/sprays/patrick_star_preview_2.png">
-                <p>Jane's high score is: 300</p>
+                <img src="${person.pic}">
+                <p>${person.name}'s high score is: ${person.score}</p>
             </div>
             `;
             document.querySelector('.cards').innerHTML += snippet
