@@ -41,7 +41,7 @@ async function getProfile() {
 function showProfile(data) {
     const mainEl = document.querySelector("aside header");
         const template = `
-            <img src="${data.thumb_url}" alt="${data.alt_text}" class="rounded-full w-16" />
+            <img src="${data.thumb_url}" alt="User profile picture" class="rounded-full w-16" />
             <h2 class="font-Comfortaa font-bold text-2xl">${data.username}</h2>
         `
         mainEl.insertAdjacentHTML("beforeend", template);
@@ -95,7 +95,7 @@ function showPosts(posts) {
                 </div>
                 ${ showComments(post.comments) }
 
-                <p class="uppercase text-gray-500 text-xs">${post.display_time}</p>
+                <p class="uppercase text-gray-600 text-xs">${post.display_time}</p>
             </div>
             <div class="flex justify-between items-center p-3">
                 <div class="flex items-center gap-3 min-w-[80%]">
@@ -103,7 +103,7 @@ function showPosts(posts) {
                     <label for="comment" >Add a comment</label>
                     <input type="text" class="min-w-[80%] focus:outline-none" placeholder="Add a comment..." aria-label="Add a comment">
                 </div>
-                <button aria-label="Post" class="text-blue-500 py-2">Post</button>
+                <button aria-label="Post" class="text-blue-700 py-2">Post</button>
             </div>
         </section>
         `
@@ -129,12 +129,12 @@ function showSuggestions(data) {
     data.forEach(user => {
         const template = `
                     <section class="flex justify-between items-center mb-4 gap-2">
-                <img src="${user.thumb_url}" alt="${user.alt_text}" class="rounded-full" />
+                <img src="${user.thumb_url}" alt="User profile picture" class="rounded-full" />
                 <div class="w-[180px]">
                     <p class="font-bold text-sm">${user.username}</p>
-                    <p class="text-gray-500 text-xs">suggested for you</p>
+                    <p class="text-gray-600 text-xs">suggested for you</p>
                 </div>
-                <button aria-label="Follow" class="text-blue-500 text-sm py-2">follow</button>
+                <button aria-label="Follow" class="text-blue-700 text-sm py-2">follow</button>
             </section>
         `
         mainEl.insertAdjacentHTML("beforeend", template);
@@ -160,7 +160,7 @@ function showStories(data) {
         const template = `
             <div class="flex flex-col justify-center items-center">
                 <img src="${story.user.thumb_url}" alt="${story.alt_text}" class="rounded-full border-4 border-gray-300" />
-                <p class="text-xs text-gray-500">${story.user.username}</p>
+                <p class="text-xs text-gray-600">${story.user.username}</p>
             </div>
         `
         mainEl.insertAdjacentHTML("beforeend", template);
@@ -171,7 +171,7 @@ function showComments(comments) {
     if(comments.length > 1) {
         const lastComment = comments[comments.length-1];
         return `
-        <button aria-label="View all comments"class="text-sm mb-3"> view all ${comments.length} comments</button>
+        <button aria-label="View all comments" class="text-sm mb-3"> view all ${comments.length} comments</button>
         <p class="text-sm mb-3">
             <strong>${lastComment.user.username}</strong> ${lastComment.text}</p>
         `;
@@ -187,10 +187,10 @@ function showComments(comments) {
 
 function getLikeButton(post) {
     if (post.current_user_like_id) {
-        return `<button onclick="deleteLike(${post.current_user_like_id})">
+        return `<button aria-label="Unlike" onclick="deleteLike(${post.current_user_like_id})">
     <i class="fa-solid fa-heart text-red-700"></i></button>`
     } else {
-        return `<button onclick="createLike(${post.id})">
+        return `<button aria-label="like" onclick="createLike(${post.id})">
         <i class="far fa-heart">
     </i></button>`;
     }
@@ -227,9 +227,9 @@ window.deleteLike = async function(likeId) {
 
 function getBookmarkButton(post) {
     if (post.current_user_bookmark_id) {
-        return `<button onclick="deleteBookmark(${post.current_user_bookmark_id})"><i class="fa-solid fa-bookmark"></i></button>`
+        return `<button aria-label="Unbookmark" onclick="deleteBookmark(${post.current_user_bookmark_id})"><i class="fa-solid fa-bookmark"></i></button>`
     } else {
-        return `<button onclick="createBookmark(${post.id})">
+        return `<button aria-label="Bookmark" onclick="createBookmark(${post.id})">
         <i class="far fa-bookmark">
         </i></button>`;
     }
