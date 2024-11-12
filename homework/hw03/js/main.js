@@ -41,7 +41,7 @@ async function getProfile() {
 function showProfile(data) {
     const mainEl = document.querySelector("aside header");
         const template = `
-            <img src="${data.thumb_url}" alt="User profile picture" class="rounded-full w-16" />
+            <img src="${data.thumb_url}" alt="Your Profile picture" class="rounded-full w-16" />
             <h2 class="font-Comfortaa font-bold text-2xl">${data.username}</h2>
         `
         mainEl.insertAdjacentHTML("beforeend", template);
@@ -100,7 +100,6 @@ function showPosts(posts) {
             <div class="flex justify-between items-center p-3">
                 <div class="flex items-center gap-3 min-w-[80%]">
                     <i class="far fa-smile text-lg"></i>
-                    <label for="comment" >Add a comment</label>
                     <input type="text" class="min-w-[80%] focus:outline-none" placeholder="Add a comment..." aria-label="Add a comment">
                 </div>
                 <button aria-label="Post" class="text-blue-700 py-2">Post</button>
@@ -129,7 +128,7 @@ function showSuggestions(data) {
     data.forEach(user => {
         const template = `
                     <section class="flex justify-between items-center mb-4 gap-2">
-                <img src="${user.thumb_url}" alt="User profile picture" class="rounded-full" />
+                <img src="${user.thumb_url}" alt="${user.username}'s profile picture" class="rounded-full" />
                 <div class="w-[180px]">
                     <p class="font-bold text-sm">${user.username}</p>
                     <p class="text-gray-600 text-xs">suggested for you</p>
@@ -159,7 +158,7 @@ function showStories(data) {
     data.forEach(story => {
         const template = `
             <div class="flex flex-col justify-center items-center">
-                <img src="${story.user.thumb_url}" alt="${story.alt_text}" class="rounded-full border-4 border-gray-300" />
+                <img src="${story.user.thumb_url}" alt="${story.user.username}'s profile picture" class="rounded-full border-4 border-gray-300" />
                 <p class="text-xs text-gray-600">${story.user.username}</p>
             </div>
         `
