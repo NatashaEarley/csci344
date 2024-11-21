@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <body>
+    <main>
+      {% block content %}
+      <p>Search location: {{location or 'None Specified'}}</p>
+      <p>Search term: {{search_term or 'None Specified'}}</p>
+
+      <section class="card">
+        <h2>{{ restaurant.get('name') }}</h2>
+        <img class="pic" src="{{ restaurant.get('image_url') }}" alt="" />
+        <p>{{ restaurant.get('display_address') }}</p>
+        <table>
+          <tr>
+            <td>Price:</td>
+            <td>{{ restaurant.get('price') }}</td>
+          </tr>
+          <tr>
+            <td>Rating:</td>
+            <td>{{ restaurant.get('rating') }}</td>
+          </tr>
+          <tr>
+            <td>Number of Reviews:</td>
+            <td>{{ restaurant.get('review_count') }}</td>
+          </tr>
+        </table>
+      </section>
+      {% endblock %}
+    </main>
+  </body>
+</html>
