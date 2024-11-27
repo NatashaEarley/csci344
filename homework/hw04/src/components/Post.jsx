@@ -29,7 +29,7 @@ export default function Post({postData, token}) {
                 <div className="text-sm mb-3">
                     <p className="flex gap-2">
                         <strong>{postData.user.username}</strong>
-                        {postData.caption}<button class="button">more</button>
+                        {postData.caption}<button className="button">more</button>
                     </p>
                 </div>
                 <p className="flex gap-2 text-sm mb-3">
