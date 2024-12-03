@@ -20,11 +20,11 @@ export default function Stories({ token }) {
     }
 
     return (
-        <div>
+        <header className="flex gap-6 bg-white border p-2 overflow-hidden mb-6">
             {
                 stories.map(outputStory)
             }
-        </div>
+        </header>
         );
 }
 

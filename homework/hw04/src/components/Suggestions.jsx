@@ -7,13 +7,13 @@ import Suggestion from "./Suggestion"
 export default function Suggestions({ token }) {
     const [suggestions, setSuggestions] = useState([]);
 
-    async function getPosts() {
+    async function getSuggestions() {
         const data = await getDataFromServer(token, "/api/suggestions");
         setSuggestions(data);
     }
 
     useEffect(() => {
-        getPosts();
+        getSuggestions();
     }, []);
 
     function outputSuggestion(suggestionObj) {
@@ -21,7 +21,10 @@ export default function Suggestions({ token }) {
     }
 
     return (
-        <div>
+        <div className="mt-4">
+        <p className="text-base text-gray-400 font-bold mb-4">
+            Suggestions for you
+        </p>
             {
                 suggestions.map(outputSuggestion)
             }

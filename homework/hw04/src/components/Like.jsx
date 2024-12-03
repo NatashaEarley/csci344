@@ -13,7 +13,7 @@ export default function Like({ token, likeId, postId }) {
     }
 
     async function deleteLike() {
-        const url = '/api/likes/' + stateBookmarkId;
+        const url = '/api/likes/' + stateLikeId;
         const responseData = await deleteDataFromServer(token, url);
         setStateLikeId(null);
     }
@@ -21,10 +21,10 @@ export default function Like({ token, likeId, postId }) {
 
     if (stateLikeId) {
         return (
-            <button onClick={deleteLike}><i className="fas text-red-700 fa-heart"></i></button>
+            <button aria-label="Unlike" onClick={deleteLike}><i className="fas text-red-700 fa-heart"></i></button>
         );
     } else {return (
-        <button onClick={createLike}><i className="far fa-heart"></i></button>
+        <button aria-label="Like" onClick={createLike}><i className="far fa-heart"></i></button>
     );
 
     }
