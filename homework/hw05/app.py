@@ -27,7 +27,7 @@ api = Api(app)
 
 # order matters here (needs to come after DB init line)
 with app.app_context():
-    current_user = User.query.filter_by(id=12).one()
+    current_user = User.query.filter_by(id=17).one()
 
 
 # Initialize routes for all of your API endpoints:
