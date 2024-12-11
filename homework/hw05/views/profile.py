@@ -21,7 +21,7 @@ class ProfileDetailEndpoint(Resource):
 
         if not thumb_url:
            return Response(
-                json.dumps({"message": "image_url is a required parameter"}),
+                json.dumps({"message": "thumb_url is a required parameter"}),
                 mimetype="application/json",
                 status=400,
            )
