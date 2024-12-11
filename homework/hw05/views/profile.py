@@ -3,41 +3,38 @@ import json
 from flask import Response, request
 from flask_restful import Resource
 from models.user import User
+from models import db
 
 
 def get_path():
     return request.host_url + "api/posts/"
 
-
+#"message": "Did not attempt to load JSON data because the request Content-Type was not 'application/json'."
 class ProfileDetailEndpoint(Resource):
 
     def __init__(self, current_user):
         self.current_user = current_user
 
     def get(self):
-       data = request.json
-       thumb_url = data.get("thumb_url")
-       caption = data.get("caption")
-       alt_text = data.get("alt_text")
+        data = request.json
+        thumb_url = data.get("thumb_url")
 
-       if not image_url:
+        if not thumb_url:
            return Response(
                 json.dumps({"message": "image_url is a required parameter"}),
                 mimetype="application/json",
                 status=400,
            )
 
-       new_profile = Profile(
-            image_url=image_url,
+        new_profile = User(
+            thumb_url=thumb_url,
             user_id=self.current_user.id,
-            caption=caption,
-            alt_text=alt_text,
         )
-       db.session.add(new_post)
-       db.session.commit() 
+        db.session.add(new_profile)
+        db.session.commit() 
        
-       return Response(
-            json.dumps(new_post.to_dict(user=self.current_user)), 
+        return Response(
+            json.dumps(new_profile.to_dict(user=self.current_user)), 
             mimetype="application/json", 
             status=201,
             )

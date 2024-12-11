@@ -72,7 +72,8 @@ class BookmarkDetailEndpoint(Resource):
         self.current_user = current_user
 
 #I'm stumped by this delete? The GET is also not working but the POST is. 
-# I worked a little on other pages too, but getting the POST to work for DELETE is as far as I could get.
+# I worked on the pages and added as far as I can get in the code, 
+# but getting the POST to work for Bookmarks is as far as I could get besides the stuff for Posts.
 # I keep getting this error: "message": "The method is not allowed for the requested URL."
 def delete(self, id):
     try:
