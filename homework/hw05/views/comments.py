@@ -27,7 +27,7 @@ class CommentListEndpoint(Resource):
                 )
             else:
                 return Response(
-                    json.dumps({"Message": f"No comments found for post id={post_id}"}),
+                    json.dumps({"Message": f"No comments found for post id={id}"}),
                     mimetype="application/json",
                     status=404,
                 )
@@ -46,15 +46,29 @@ class CommentDetailEndpoint(Resource):
         self.current_user = current_user
 
     def delete(self, id):
-        # TODO: Add DELETE logic...
-        print(id)
+        print("DELETE id=", id)
+        
+        comment = Comment.query.get(id)
+        if not comment:
+            return Response(
+                json.dumps({"Message": f"Comment id={id} not found"}),
+                mimetype="application/json",
+                status=404,
+            )
 
+        if comment.user_id != self.current_user.id:
+            return Response(
+                json.dumps({"Message": "You do not have permission to delete this comment"}),
+                mimetype="application/json",
+                status=403,
+            )
+        db.session.delete(comment)
+        db.session.commit()
         return Response(
-            json.dumps({}),
+            json.dumps({"message": f"Comment id={id} deleted successfully"}),
             mimetype="application/json",
             status=200,
         )
-
 
 def initialize_routes(api, current_user):
     api.add_resource(
